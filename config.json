@@ -1,0 +1,21 @@
+{
+    "params":
+    {
+        "gym_name":"Muscle World Gym",
+        "sub_heading":"Your fitness is our motto",
+        "about_us":"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, rerum? Repellendus, facere quisquam fugit provident amet libero aspernatur maiores totam fugiat accusamus ad officia necessitatibus vel sint dolorum unde consequatur quod quia omnis ipsum perferendis magni corrupti! Voluptate cumque nostrum vitae ipsam laborum, a sit consequuntur perferendis laboriosam ut, asperiores eaque quaerat molestias recusandae sapiente aperiam impedit doloremque quos explicabo aspernatur animi. Ullam dolorem accusantium ad laudantium harum nam qui",
+        "standard":3000,
+        "gold":7000,
+        "platinum":10000,
+        "diamond":14000,
+        "fb_link":"https://www.facebook.com/MuscleWorld/",
+        "twitter_link":"https://www.twitter.com/muscleworld",
+        "insta_link":"https://www.instagram.com/MuscleWorld/",
+        "user_id":"sachin",
+        "password":"yoyo",
+        "no_of_page":3
+
+
+        
+    }
+}

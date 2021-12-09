@@ -1,0 +1,71 @@
+
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+
+</head>
+<body>
+    <header class="text-gray-400 bg-gray-900 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+            <img src="https://svg-clipart.com/thumbs/man/BM9137g-muscle-clipart.jpg" width="40" alt="">
+            <span class="ml-3 text-xl">{{params["gym_name"]}}</span>
+          </a>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-white" href="/">Home</a>
+            <a class="mr-5 hover:text-white" href="/service">Services</a>
+            <a class="mr-5 hover:text-white" href="/post">Blog</a>
+            <a class="mr-5 hover:text-white" href="/about">About</a>
+            <a class="mr-5 hover:text-white" href="/contact">Contact Us</a>
+            <a class="mr-5 hover:text-white" href="/logout">Logout</a>
+          </nav>
+          <a href="/price"><button class="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" type="submit" >Enrol now
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button></a>
+        </div>
+      </header>
+<section class="text-gray-400 bg-gray-900 body-font relative">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-12">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">Admin Panel</h1>
+        <!--  <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify.</p> -->
+      </div> 
+      <form action="/dashboard" method="post">
+      <div class="lg:w-1/2 md:w-2/3 mx-auto">
+        <div class="flex flex-wrap -m-2">
+          <div class="p-2 w-1/2">
+            <div class="relative">
+              <label for="category" class="leading-7 text-sm text-gray-400">Category</label>
+              <input type="text" id="category" name="category" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" wtx-context="8A71E2BD-8EBD-4107-9147-3BDFC5155AEC">
+            </div>
+          </div>
+          <div class="p-2 w-1/2">
+            <div class="relative">
+              <label for="title" class="leading-7 text-sm text-gray-400">Title</label>
+              <input type="text" id="title" name="title" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" wtx-context="676DA8C7-E584-4CA6-A352-21A885AE67AF">
+            </div>
+          </div>
+          <div class="p-2 w-full">
+            <div class="relative">
+              <label for="content" class="leading-7 text-sm text-gray-400">Content</label>
+              <textarea id="content" name="content" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-indigo-500 focus:bg-gray-900 focus:ring-2 focus:ring-indigo-900 h-32 text-base outline-none text-gray-100 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+            </div>
+          </div>
+          <div class="p-2 w-full">
+            <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" type="submit">Post</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+  </section>
+  
+{% endblock %}
