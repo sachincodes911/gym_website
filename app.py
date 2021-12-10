@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 import math
 
-
+#TODO--- final testing before deployment,delete not working
 
 
 with open("config.json","r") as c:
@@ -102,18 +102,11 @@ def post():
     return render_template("post.html",params=params,posts=posts,next=next,prev=prev)
 
 
-@app.route("/dashboard",methods=["GET","POST"])
+@app.route("/dashboard")
 def dashboard():
+    posts=Post.query.all()
     if "user" in session and session["user"]==params["user_id"]:
-        if request.method=="POST":
-            category=request.form.get("category")
-            title=request.form.get("title")
-            content=request.form.get("content")
-            date=datetime.now().date()
-            entry=Post(date=date,category=category,title=title,content=content)
-            db.session.add(entry)
-            db.session.commit()
-        return render_template("dashboard.html",params=params)
+        return render_template("dashboard.html",params=params,posts=posts)
     else:
         return("login to continue")
 
@@ -129,7 +122,7 @@ def login():
     user_id=request.form.get("user_id")
     if params["user_id"]==user_id and params["password"]==password:
         session['user']=user_id
-        return render_template("dashboard.html",params=params)
+        return redirect("/dashboard") #render_template("dashboard.html",params=params)
         
     return render_template("login.html",params=params)
 
@@ -138,6 +131,42 @@ def login():
 def logout():
     session.clear()
     return render_template("login.html",params=params)
+
+
+@app.route("/edit/<sno>",methods=["GET","POST"])
+def edit(sno):
+    if "user" in session and session["user"]==params["user_id"]:
+        post=Post.query.filter_by(sno=sno).first()
+        if request.method=="POST":
+            post.category=request.form.get("category")
+            post.title=request.form.get("title")
+            post.content=request.form.get("content")
+            db.session.commit()
+            return redirect("/dashboard")
+    return render_template("edit.html",params=params,post=post)
+
+
+@app.route("/delete/<sno>",methods=["GET","POST"])
+def delete(sno):
+    if "user" in session and session["user"]==params["user_id"]:
+        post=Post.query.filter_by(sno=sno).first()
+        db.session.delete(post)
+        db.session.commit()
+    return redirect("/dashboard")
+
+@app.route("/submit",methods=["GET","POST"])
+def submit():
+    if "user" in session and session["user"]==params["user_id"]:
+        if request.method=="POST":
+                category=request.form.get("category")
+                title=request.form.get("title")
+                content=request.form.get("content")
+                date=datetime.now().date()
+                entry=Post(date=date,category=category,title=title,content=content)
+                db.session.add(entry)
+                db.session.commit()
+                return redirect("/dashboard")
+
 
 db.create_all()
 
